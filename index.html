@@ -1,0 +1,51 @@
+<!DOCTYPE html> 
+<html data-ng-app="ntApp">
+  <head>
+    <title>angular search youtube</title>
+    <link rel="stylesheet" type="text/css" href="/assets/app.css" />
+	<!-- Include the core AngularJS library -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
+	
+  </head>
+
+  <body nt-scroll-to-top nt-loading-indicator>
+    <div id="wrapper">
+      <header class="nt-header">
+        <form ng-submit="search()" ng-controller="SearchFormCtrl" class="nt-search-header">
+          <section>
+            <a href="#/" class="fa fa-home nt-nav-icon"></a>
+            <span class="fa fa-search nt-nav-icon nt-search-icon" ng-click="search()"></span>
+            <input type="search" ng-model="q" class="nt-search-input" />
+            <a href="" class="nt-advanced-search-link" ng-click="advanced = advanced ? null : {}">
+              <span class="fa fa-cog"></span>
+              Search Tools
+            </a>
+          </section>
+          <section ng-if="advanced" class="nt-advanced-search-header row">
+            <datalist id="categories" ng-controller="CategoryListCtrl">
+              <option value="{{ category }}" ng-repeat="category in categories" />
+            </datalist>
+            <div class="col-md-4">
+              <input type="text" ng-model="advanced.category" placeholder="Youtube Category" class="form-control" list="categories" />
+            </div>
+            <div class="col-md-4">
+              <select class="form-control" ng-model="advanced.orderby" ng-options="option as option for option in orderingOptions" placeholder="Sorting Options...">
+              </select>
+            </div>
+            <button class="btn btn-default col-md-2">
+              <span class="fa fa-search"></span> Submit Search
+            </button>
+          </section>
+        </form>
+      </header>
+      <main id="view-container" class="nt-view-container">
+        <div ng-view class="nt-view"></div>
+      </main>
+    </div>
+    <script src="scripts/ntApp.js"></script>
+	<script src="scripts/ytCore.js"></script>
+	<script src="scripts/ntAppAnimations.js"></script>
+  </body>
+</html>

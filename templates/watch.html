@@ -1,0 +1,29 @@
+<section class="nt-panel">
+  <header class="nt-panel-heading nt-primary-heading">
+    <h5 class="nt-heading">
+      {{ video.title }}
+    </h5>
+  </header>
+
+  <div class="nt-player-panel">
+    <div class="nt-player" yt-video-player="{{ video_id }}"></div>
+  </div>
+
+  <div class="row nt-grid">
+    <div class="col-md-8 col">
+      <header class="nt-panel-heading">
+        <h5 class="nt-heading">
+          Video Info
+        </h5>
+      </header>
+
+      <div class="row nt-padded">
+        <img ng-src="{{ video.image.url }}" class="col-md-4" />
+        <div class="nt-video-panel-inner col-md-8">
+          <h4>{{ video.title }}</h4>
+          <p>{{ video.description }}</p>
+        </div>
+      </div>
+	</div>
+  </div>
+</section>
